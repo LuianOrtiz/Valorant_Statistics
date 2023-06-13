@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/jpg" href="https://img.icons8.com/?size=512&id=GHv5stFlLLcA&format=png"/>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .custom-bg-color {
+            background-color: #494949;
+        }
+        .custom-content-color {
+            background-color: #2B3843;
+        }
+        .custom-bg-color2 {
+            background-color: #485C6D;
+        }
+    </style>
+    <title>Ciencia de datos</title>
+</head>
+<body class="flex flex-col min-h-screen">
+    <nav class="custom-bg-color">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+            <div class="flex-shrink-0 flex items-center">
+                <img src="https://titles.trackercdn.com/valorant-api/agents/dade69b4-4f5a-8528-247b-219e5a1facd6/abilities/ability2/displayicon.png" alt="Logo" class="w-8 h-8 mr-2">
+                <a href="#" class="text-white font-bold text-xl">Who Agent on What Map?</a>
+            </div>
+            <div class="hidden md:block">
+                <div class="ml-10 flex items-baseline space-x-4">
+                <a href="/" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Inicio</a>
+                <a href="#formulario" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Formulario</a>
+                </div>
+            </div>
+            </div>
+        </div>
+    </nav>
+        <div class="flex-grow custom-bg-color2">
+            <div class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
+                <div class="bg-gray-700 rounded-lg shadow-lg p-6">
+                    <p class="text-lg text-white">Inteligencia Artificial en donde podrás predecir que Score tendrás en tu siguiente partida de valorant!.</p>
+                </div>
+            </div>
+        
+            <div class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
+                <div class="max-w-7xl mx-auto mt-1">
+                    <div class="rounded-lg shadow-lg overflow-hidden">
+                        <img src="{{url_agent_img}}" alt="Banner" class="w-2/4">
+                    </div>
+                </div>
+
+                <!-- Tabla de contenido-->
+                <div class="max-w-7xl mx-auto mt-8">
+                    <div class="overflow-x-auto">
+                    <table class="w-full table-auto">
+                        <thead>
+                        <tr>
+                            <th class="px-4 py-2 bg-gray-700 text-red-400">KAST</th>
+                            <th class="px-4 py-2 bg-gray-700 text-red-400">ACS</th>
+                            <th class="px-4 py-2 bg-gray-700 text-red-400">ADR</th>
+                            <th class="px-4 py-2 bg-gray-700 text-red-400">R</th>
+                            <th class="px-4 py-2 bg-gray-700 text-red-400">K:D</th>
+                            <th class="px-4 py-2 bg-gray-700 text-red-400">K</th>
+                            <th class="px-4 py-2 bg-gray-700 text-red-400">D</th>
+                            <th class="px-4 py-2 bg-gray-700 text-red-400">A</th>
+                            <!-- Agregar más encabezados si es necesario -->
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <!-- Aqui va el for-->
+                            {% for dato in resultado[0] %}
+                                <td class="border px-4 py-2 text-white">{{ dato|round }}</td>
+                            {% endfor %}
+                        </tr>
+                        </tbody>
+                    </table>
+                    </div>
+                </div>
+                
+                <!-- Imagen del mapa-->
+                <div class="max-w-7xl mx-auto mt-8">
+                    <div class="rounded-lg shadow-lg overflow-hidden">
+                    <img src="{{url_map_img}}" alt="Imagen Cuadrada" class="w-full">
+                    </div>
+                </div>    
+        </div>
+
+        <!-- Formulario-->
+        <div class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8" id="formulario">
+            <div class="custom-content-color p-8 rounded-lg shadow-lg">
+            <form action="/" method="POST">
+                <div class="grid grid-cols-2 gap-4">
+                <div>
+                    <label class="block mb-2 text-red-400" for="Mapa">Selecciona tu mapa:</label>
+                    <select id="Mapa" name="Mapa" class="w-full border-gray-300 rounded-md p-2">
+                        <option value="1">Bind</option>
+                        <option value="2">Haven</option>
+                        <option value="3">Split</option>
+                        <option value="5">Ascent</option>
+                        <option value="6">IceBox</option>
+                        <option value="8">Breeze</option>
+                        <option value="9">Fracture</option>
+                        <option value="10">Pearl</option>
+                        <option value="11">Lotus</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block mb-2 text-red-400" for="Agent">Selecciona tu agente:</label>
+                    <select id="Agent" name="Agent" class="w-full border-gray-300 rounded-md p-2">
+                        <option value="8">Jett</option>
+                        <option value="0">Astra</option>
+                        <option value="1">Breach</option>
+                        <option value="2">Brimstone</option>
+                        <option value="3">Chamber</option>
+                        <option value="4">Cypher</option>
+                        <option value="5">Fade</option>
+                        <option value="6">Gekko</option>
+                        <option value="7">Harbor</option>
+                        <option value="9">Kay/O</option>
+                        <option value="10">KillJoy</option>
+                        <option value="11">Neon</option>
+                        <option value="12">Omen</option>
+                        <option value="13">Phoenix</option>
+                        <option value="14">Raze</option>
+                        <option value="15">Reyna</option>
+                        <option value="16">Sage</option>
+                        <option value="17">Skye</option>
+                        <option value="18">Sova</option>
+                        <option value="19">Viper</option>
+                        <option value="20">Yoru</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block mb-2 text-red-400" for="Rnd">Rondas jugadas:</label>
+                    <input type="number" step="any" id="Rnd" name="Rnd" class="w-full border-gray-300 rounded-md p-2">
+                </div>
+                <div>
+                    <label class="block mb-2 text-red-400" for="APR">Asistencias por Ronda:</label>
+                    <input type="number" step="any" id="APR" name="APR" class="w-full border-gray-300 rounded-md p-2">
+                </div>
+                <div>
+                    <label class="block mb-2 text-red-400" for="KPR">Asesinatos por Ronda:</label>
+                    <input type="number" step="any" id="KPR" name="KPR" class="w-full border-gray-300 rounded-md p-2">
+                </div>
+                <div>
+                    <label class="block mb-2 text-red-400" for="KMax">Maximo de Asesinatos por mapa:</label>
+                    <input type="number" step="any" id="KMax" name="KMax" class="w-full border-white-300 rounded-md p-2">
+                </div>
+                </div>
+                <div class="flex justify-end mt-4">
+                    <button type="submit" class="px-4 py-2 bg-red-400 text-white rounded-md hover:bg-red-600">Enviar</button>
+                </div>
+            </form>
+        </div>
+        </div>
+
+    <!-- Footer -->
+    <footer class="custom-bg-color text-white py-4">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between">
+            <div class="text-sm">© 2023 Luian Ortiz. Todos los derechos reservados.</div>
+            <div class="text-sm">El modelo de predicción fue entrenado con datos sacados de <b><a href="https://www.vlr.gg/">vlr.gg</a></b>.</div>
+            <div class="text-sm">Desarrollado por <a href="#" class="underline">LuianOrtiz</a></div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
